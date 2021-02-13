@@ -31,7 +31,9 @@ You can add a new Service Test to ensure that the apcupsd daemon starts up, and 
 
 INSTALLATION
 
-I attempted to create an installable package for this following the Helloeworld instructions, but it continually failed running the "make plugins" command.  Just copy the files here to their locations on your server.
+I attempted to create an installable package for this following the Helloworld instructions, but it continually failed running the "make plugins" command.  Just copy the files here to their locations on your server.
+
+WHY
 
 This is my first attempt at an OPNsense plugin - I wrote this becuase the NUT package would continually disconnect after configuring it for my UPS. I have been running apcupsd for several weeks now, and it has not failed once.
 
