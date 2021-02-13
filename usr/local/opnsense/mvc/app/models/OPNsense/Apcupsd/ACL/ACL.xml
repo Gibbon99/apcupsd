@@ -1,0 +1,11 @@
+<acl>
+   <page-services-apcupsd>
+      <name>WebCfg - Services: APCUPSD System Monitoring page</name>
+      <description>Allow access to the 'Services: APCUPSD System Monitoring' page.</description>
+      <patterns>
+         <pattern>ui/apcupsd/*</pattern>
+         <pattern>api/apcupsd/*</pattern>
+      </patterns>
+   </page-services-apcupsd>
+</acl>
+

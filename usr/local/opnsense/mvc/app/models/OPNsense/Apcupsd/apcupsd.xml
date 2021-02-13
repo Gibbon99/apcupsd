@@ -1,0 +1,75 @@
+<model>
+  <mount>//OPNsense/apcupsd</mount>
+  <version>0.0.1</version>
+  <description>APC UPS configuration</description>
+  <items>
+    <!-- Container -->
+    <general>
+      <!-- field -->
+      <Enabled type="BooleanField">
+        <default>0</default>
+        <Required>Y</Required>
+      </Enabled>
+      <UPSName type="TextField">
+        <default>Firewall_UPS</default>
+        <Required>Y</Required>
+        <ValidationMessage>A name for the UPS is required.</ValidationMessage>
+      </UPSName>
+      <UPSCable type="OptionField">
+        <default>smart</default>
+        <Required>Y</Required>
+        <OptionValues>
+          <simple>Simple</simple>
+          <smart>Smart</smart>
+          <ether>Ether</ether>
+          <usb>USB</usb>
+        </OptionValues>
+      </UPSCable>
+      <UPSType type="OptionField">
+        <default>apcsmart</default>
+        <Required>Y</Required>
+        <OptionValues>
+          <apcsmart>apcsmart</apcsmart>
+          <usb>usb</usb>
+          <net>net</net>
+          <snmp>snmp</snmp>
+          <netsnmp>netsnmp</netsnmp>
+          <dumb>dumb</dumb>
+          <pcnet>pcnet</pcnet>
+          <modbus>modbus</modbus>
+        </OptionValues>
+      </UPSType>
+      <Device type="TextField">
+        <Required>N</Required>
+        <default>/dev/cuaU0</default>
+      </Device>
+      <Polltime type="IntegerField">
+        <Required>N</Required>
+        <default>60</default>
+        <MinimumValue>1</MinimumValue>
+        <MaximumValue>86400</MaximumValue>
+        <ValidationMessage>Polltime must be between 1 and 86400.</ValidationMessage>
+      </Polltime>
+      <Netserver type="OptionField">
+        <default>off</default>
+        <Required>N</Required>
+        <OptionValues>
+          <on>on</on>
+          <off>off</off>
+        </OptionValues>
+      </Netserver>
+      <NetserverAddress type="NetworkField">
+        <default>0.0.0.0</default>
+        <Required>N</Required>
+      </NetserverAddress>
+      <NetserverPort type="IntegerField">
+        <default>3551</default>
+        <Required>N</Required>
+        <MinimumValue>1</MinimumValue>
+        <MaximumValue>65535</MaximumValue>
+        <ValidationMessage>Netserver port needs to be an value between 1 and 65535.</ValidationMessage>
+        <Required>N</Required>
+      </NetserverPort>
+    </general>
+  </items>
+</model>
