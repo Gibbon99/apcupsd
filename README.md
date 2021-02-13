@@ -7,6 +7,7 @@ I use the OPNsense monit service to control the running of the apcupsd service. 
 
 The monit service can be configured like this:
 
-https://github.com/Gibbon99/apcupsd/blob/master/Docs/monit_apc.png
+![Monit service config](https://github.com/Gibbon99/apcupsd/blob/master/Docs/monit_apc.png)
+
 
 
