@@ -3,7 +3,7 @@
         <id>apcupsd.general.Enabled</id>
         <label>Enabled</label>
         <type>checkbox</type>
-        <help>Enable the APC UPS service</help>
+        <help><![CDATA[Enable the APC UPS service.]]></help>
     </field>
     <field>
         <id>apcupsd.general.UPSName</id>
@@ -15,7 +15,7 @@
     <field>
         <id>apcupsd.general.UPSCable</id>
         <label>UPS cable type</label>
-	<type>dropdown</type>
+        <type>dropdown</type>
         <help><![CDATA[Defines the type of cable connecting the UPS to the server.]]></help>
         <hint>Choose cable type.</hint>
     </field>
@@ -29,40 +29,41 @@
     <field>
         <id>apcupsd.general.Device</id>
         <label>UPS Device</label>
-	<type>text</type>
+        <type>text</type>
         <help><![CDATA[Which port is the UPS connected to. Leave blank for USB UPSes.]]></help>
         <hint>Specify an appropriate port or address.</hint>
     </field>
     <field>
         <id>apcupsd.general.Polltime</id>
         <label>Polltime</label>
-	<type>text</type>
-        <help>Interval, in seconds, at which apcupsd polls the UPS for the current state.</help>
-        <hint>This setting applies to both directly attached units - type: apcsmart, usb, dumb, and networked units - type: net, snmp</hint>
-	<advanced>true</advanced>
+        <type>text</type>
+        <help><![CDATA[Interval, in seconds, at which apcupsd polls the UPS for the current state.]]></help>
+        <hint>This setting applies to both directly attached units - type: apcsmart, usb, dumb, and networked units - type: net, snmp.</hint>
+        <advanced>true</advanced>
     </field>
     <field>
         <id>apcupsd.general.Netserver</id>
         <label>Netserver</label>
-	<type>dropdown</type>
-        <help>Sets the state of the network information server.</help>
+        <type>dropdown</type>
+        <help><![CDATA[Sets the state of the network information server.]]></help>
         <hint>A network information server is available to retrieve the STATUS and EVENT data over the network.</hint>
-	<advanced>true</advanced>
+        <advanced>true</advanced>
     </field>
     <field>
         <id>apcupsd.general.NetserverAddress</id>
         <label>Netserver IP address</label>
-	<type>text</type>
-        <help>IP address on which the Netserver will listen for incoming connections.</help>
+        <type>text</type>
+        <help><![CDATA[IP address on which the Netserver will listen for incoming connections.]]></help>
         <hint>Default address is 0.0.0.0 which means any incoming connection will be serviced.</hint>
-	<advanced>true</advanced>
+        <advanced>true</advanced>
     </field>
     <field>
         <id>apcupsd.general.NetserverPort</id>
         <label>Netserver port</label>
-	<type>text</type>
-        <help>Network port used to send STATUS and EVENT data over the network.</help>
+        <type>text</type>
+        <help><![CDATA[Network port used to send STATUS and EVENT data over the network.]]></help>
         <hint>Port 3551 is the default as registered with the IANA.</hint>
-	<advanced>true</advanced>
+        <advanced>true</advanced>
     </field>
 </form>
+
