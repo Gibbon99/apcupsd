@@ -1,9 +1,9 @@
 <menu>
     <Services>
-      <Apcupsd cssClass="fa fa-heartbeat fa-fw">
-         <Settings url="/ui/apcupsd"/>
-         <Status url="/ui/apcupsd/status"/>
-      </Apcupsd>
+        <Apcupsd cssClass="fa fa-heartbeat fa-fw">
+            <Settings url="/ui/apcupsd" />
+            <Status url="/ui/apcupsd/status" />
+        </Apcupsd>
     </Services>
 </menu>
 
