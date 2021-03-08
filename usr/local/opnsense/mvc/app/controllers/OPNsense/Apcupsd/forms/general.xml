@@ -118,9 +118,10 @@
           
      <field>
          <id>apcupsd.general.KillDelay</id>
-         <label>Annoy Delay</label>
+         <label>Kill Delay</label>
          <type>text</type>
          <help><![CDATA[If KILLDELAY is non-zero, apcupsd will continue running after a shutdown has been requested, and after the specified time in seconds attempt to kill the power.
+         
           This is for use on systems where apcupsd cannot regain control after a shutdown.]]></help>
          <advanced>true</advanced>
      </field>
