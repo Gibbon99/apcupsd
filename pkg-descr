@@ -5,6 +5,7 @@ Plugin Changelog
 ================
 
 1.1.1 - Moved actions_apcupsd.conf to the correct directory. Cleanup old directories.
+        Update pkg_descr.
 
 1.1 - Some small changes incl. code cleanup and adding more parameters.
 
