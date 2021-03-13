@@ -3,26 +3,26 @@ APC UPS plugin for OPNsense
 
 Plugin Changelog
 ================
+
+1.1.1 - Moved actions_apcupsd.conf to the correct directory. Cleanup old directories.
+
 1.1 - Some small changes incl. code cleanup and adding more parameters.
 
 1.0	- Initial release
 
-"apcupsd" can be used for controlling all APC UPS models. It can monitor and log the current power 
-and battery status, perform automatic shutdown, and can run in network mode in order to power down 
-other hosts on a LAN.
+"apcupsd" can be used for controlling all APC UPS models. It can monitor and log the current power and battery status, perform automatic shutdown, and can run in network mode in order to power down other hosts on a LAN.
 
-This plugin allows you to configure a APC UPS for use with OPNsense using the APCUPSD project.
-The setup page allows you to set the most common options for connecting your UPS to your OPNsense 
-router and a status page for UPS status. Also includes support to act as APC Netserver.
+This plugin allows you to configure an APC UPS for use with OPNsense using the APCUPSD project. The setup page allows you to set the most common options for connecting your UPS to your OPNsense router and a status page for the UPS status. It also includes support to act as an APC Netserver.
 
 Additional information:
-I use the OPNsense monit service to control the running of the apcupsd service.  
-You will need to enable the APC Netserver if you would like the service to be restarted should 
-it crash or is not running the monit daemon polls the UPS service on port 3551 ( default ) to 
-see if it is running or not.
+This package does not come with a script to start the APCUPS daemon, it is recommended to use the OPNsense monit service to control the running of the apcupsd service. You will need to enable the APC Netserver if you would like the service to be restarted should it crash or is not running as the monit daemon polls the UPS service on port 3551 ( default ) to see if it is running or not.
 
-The monit service can be configured:
-You can add a new Service Test to ensure that the apcupsd daemon starts up, and Monit will restart 
-it should it crash.
+You can add a new Monit "Service Test" to ensure that the apcupsd daemon starts up, and Monit will restart it should it crash.
+
+Within the "Service Tests" section, you can test for the apcups daemon by using the line:
+
+failed host Your_OPNsense_ IP port 3551 type TCP
+
+with an action of "Restart".
 
 WWW: http://www.apcupsd.org/
