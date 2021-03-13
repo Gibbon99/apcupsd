@@ -10,12 +10,16 @@ Plugin Changelog
 
 1.0	- Initial release
 
-"apcupsd" can be used for controlling all APC UPS models. It can monitor and log the current power and battery status, perform automatic shutdown, and can run in network mode in order to power down other hosts on a LAN.
+"apcupsd" can be used for controlling all APC UPS models. It can monitor and log the current power and battery status, perform automatic shutdown,
+and can run in network mode in order to power down other hosts on a LAN.
 
-This plugin allows you to configure an APC UPS for use with OPNsense using the APCUPSD project. The setup page allows you to set the most common options for connecting your UPS to your OPNsense router and a status page for the UPS status. It also includes support to act as an APC Netserver.
+This plugin allows you to configure an APC UPS for use with OPNsense using the APCUPSD project. The setup page allows you to set the most common options
+for connecting your UPS to your OPNsense router and a status page for the UPS status. It also includes support to act as an APC Netserver.
 
 Additional information:
-This package does not come with a script to start the APCUPS daemon, it is recommended to use the OPNsense monit service to control the running of the apcupsd service. You will need to enable the APC Netserver if you would like the service to be restarted should it crash or is not running as the monit daemon polls the UPS service on port 3551 ( default ) to see if it is running or not.
+This package does not come with a script to start the APCUPS daemon, it is recommended to use the OPNsense monit service to control the running
+of the apcupsd service. You will need to enable the APC Netserver if you would like the service to be restarted should it crash or is
+not running as the monit daemon polls the UPS service on port 3551 ( default ) to see if it is running or not.
 
 You can add a new Monit "Service Test" to ensure that the apcupsd daemon starts up, and Monit will restart it should it crash.
 
