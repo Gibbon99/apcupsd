@@ -3,6 +3,7 @@ APC UPS plugin for OPNsense
 
 Plugin Changelog
 ================
+1.1.2 - Changed the way the values for configuration are saved and read.
 
 1.1.1 - Moved actions_apcupsd.conf to the correct directory. Cleanup old directories.
         Update pkg_descr.
