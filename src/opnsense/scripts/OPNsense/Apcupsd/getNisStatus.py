@@ -6,11 +6,7 @@
 # Get the current status from the NIS Server for the UPS
 #
 
-import subprocess as sp
-import json
+import subprocess
 
-result = {}
-
-output = sp.getoutput("/usr/local/sbin/apcaccess")
-result['message'] = output
-print (json.dumps(result))
+output = subprocess.getoutput("/usr/local/sbin/apcaccess")
+print (output)          # Return the string to the php function ( getUpsStatusAction ) within ServiceController.php
