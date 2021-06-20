@@ -18,16 +18,9 @@
         // Give some feedback
       	$("#responseMsg").removeClass("hidden");
         $("#responseMsg").html("Configuration saved. The service will need to be restarted for changes to take effect." );
-
-        // action to run after successful save, for example reconfigure service.
-        ajaxCall(url = "/api/apcupsd/service/reload", sendData = {}, callback = function (data, status)
-        {
-          // Action to run after reload
-      	  $("#responseMsg").html(data['message']);
-        });
       });
     });
- 
+
     // link button to API status action
     $("#stopAct").click(function ()
     {
@@ -60,7 +53,7 @@
         $("#responseMsg").html(data['message']);
       });
     });
- 
+
     // link status button to API status action
     $("#statusAct").click(function ()
     {
@@ -90,4 +83,3 @@
     <button class="btn btn-primary"  id="restartAct" type="button"><b>{{ lang._('Restart Service') }}</b></button>
     <button class="btn btn-primary"  id="statusAct" type="button"><b>{{ lang._('Service Status') }}</b></button>
 </div>
-

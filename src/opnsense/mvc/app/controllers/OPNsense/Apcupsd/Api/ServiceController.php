@@ -91,11 +91,14 @@ class ServiceController extends ApiControllerBase
 
     public function getUpsStatusAction()
     {
-        $result['message'] = 'Unable to run upsStatus action.';
         if ($this->request->isPost()) {
             $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd getNisStatus"));
+            $result = json_decode(trim($backend->configdRun("apcupsd getNisStatus")), true);
+            if ($result !== null) {
+              return $result;
+            }
         }
+        $result['message'] = 'Unable to run upsStatus action.';
         return $result;
     }
 }
