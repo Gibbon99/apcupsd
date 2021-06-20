@@ -25,10 +25,6 @@ The monit service can be configured like this:
 
 ![Monit service config](https://github.com/Gibbon99/apcupsd/blob/master/Docs/monit_apc.png)
 
-You can add a new Service Test to ensure that the apcupsd daemon starts up, and Monit will restart it should it crash.
-
-![Monit Service Test](https://github.com/Gibbon99/apcupsd/blob/master/Docs/monit_apc_test.png?raw=true)
-
 INSTALLATION
 
 I attempted to create an installable package for this following the Helloworld instructions, but it continually failed running the "make plugins" command.  Just copy the files here to their locations on your server.
