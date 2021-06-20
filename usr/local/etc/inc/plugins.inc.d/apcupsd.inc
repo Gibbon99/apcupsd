@@ -37,15 +37,15 @@ function apcupsd_services()
     $services = array();
 
     if (
-        isset($config['OPNsense']['apcupsd']['general']['enabled']) &&
-        $config['OPNsense']['apcupsd']['general']['enabled'] == 1
+        isset($config['OPNsense']['Apcupsd']['general']['Enabled']) &&
+        $config['OPNsense']['Apcupsd']['general']['Enabled'] == 1
     ) {
         $services[] = array(
                 'description' => gettext('APCUPSD System Monitoring'),
                 'configd' => array(
-                        'restart' => array('apcupsd restart'),
-                        'start' => array('apcupsd start'),
-                        'stop' => array('apcupsd stop'),
+                        'restart' => array('apcupsd restartService'),
+                        'start' => array('apcupsd startService'),
+                        'stop' => array('apcupsd stopService'),
                 ),
                 'name' => 'apcupsd',
         );
