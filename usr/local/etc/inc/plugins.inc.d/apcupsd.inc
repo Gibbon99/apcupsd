@@ -41,7 +41,7 @@ function apcupsd_services()
         $config['OPNsense']['Apcupsd']['general']['Enabled'] == 1
     ) {
         $services[] = array(
-                'description' => gettext('APCUPSD System Monitoring'),
+                'description' => gettext('APC UPS Daemon'),
                 'configd' => array(
                         'restart' => array('apcupsd restartService'),
                         'start' => array('apcupsd startService'),
@@ -62,7 +62,7 @@ function apcupsd_xmlrpc_sync()
     $result = array();
 
     $result[] = array(
-        'description' => gettext('APCUPSD System Monitoring'),
+        'description' => gettext('APC UPS Daemon'),
         'section' => 'OPNsense.apcupsd',
         'id' => 'apcupsd',
         'services' => ["apcupsd"],
