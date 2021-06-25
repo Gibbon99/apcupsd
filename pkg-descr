@@ -3,6 +3,8 @@ APC UPS plugin for OPNsense
 
 Plugin Changelog
 ================
+1.1.3 - Fixed up errors with getting the service status and config values not saving to apcupsd.conf
+
 1.1.2 - Changed the way the values for configuration are saved and read.
 
 1.1.1 - Moved actions_apcupsd.conf to the correct directory. Cleanup old directories.
@@ -20,15 +22,11 @@ for connecting your UPS to your OPNsense router and a status page for the UPS st
 
 Additional information:
 This package does not come with a script to start the APCUPS daemon, it is recommended to use the OPNsense monit service to control the running
-of the apcupsd service. You will need to enable the APC Netserver if you would like the service to be restarted should it crash or is
-not running as the monit daemon polls the UPS service on port 3551 ( default ) to see if it is running or not.
+of the apcupsd service.
 
-You can add a new Monit "Service Test" to ensure that the apcupsd daemon starts up, and Monit will restart it should it crash.
+The apcupsd daemon can be monitored via it's PID file ( /var/run/apcupsd.pid ) with the type set to "Process". Start and Stop can be set to:
 
-Within the "Service Tests" section, you can test for the apcups daemon by using the line:
-
-failed host Your_OPNsense_ IP port 3551 type TCP
-
-with an action of "Restart".
+Start: /usr/sbin/service apcupsd start
+Stop: /usr/sbin/service apcupsd stop
 
 WWW: http://www.apcupsd.org/
