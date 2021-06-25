@@ -19,7 +19,7 @@ The status page shows you information about the connected UPS:
 
 
 
-I use the OPNsense monit service to control the running of the apcupsd service.  You will need to enable the APC Netserver if you would like the service to be restarted should it crash or is not running - the monit daemon polls the UPS service on port 3551 ( default ) to see if it is running or not.
+I use the OPNsense Monit service to control the running of the apcupsd service.  The Monit service monitors the PID file of the apcupsd daemon, and restarts it should it fail.
 
 The monit service can be configured like this:
 
@@ -32,5 +32,3 @@ I attempted to create an installable package for this following the Helloworld i
 WHY
 
 This is my first attempt at an OPNsense plugin - I wrote this becuase the NUT package would continually disconnect after configuring it for my UPS. I have been running apcupsd for several weeks now, and it has not failed once.
-
-

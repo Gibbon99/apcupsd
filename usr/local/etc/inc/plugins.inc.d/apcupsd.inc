@@ -37,8 +37,8 @@ function apcupsd_services()
     $services = array();
 
     if (
-        isset($config['OPNsense']['Apcupsd']['general']['Enabled']) &&
-        $config['OPNsense']['Apcupsd']['general']['Enabled'] == 1
+        isset($config['OPNsense']['apcupsd']['general']['Enabled']) &&
+        $config['OPNsense']['apcupsd']['general']['Enabled'] == 1
     ) {
         $services[] = array(
                 'description' => gettext('APC UPS Daemon'),
