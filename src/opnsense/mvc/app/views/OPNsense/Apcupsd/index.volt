@@ -13,7 +13,7 @@
     // link save button to API set action
     $("#saveAct").click(function ()
     {
-      saveFormToEndpoint(url = "/api/apcupsd/settings/set", formid = 'frm_GeneralSettings', callback_ok = function ()
+      saveFormToEndpoint(url = "/api/apcupsd/settings/set", formid = 'frm_GeneralSettings', callback_ok = function (data, status)
       {
         // Give some feedback
       	$("#responseMsg").removeClass("hidden");
@@ -21,7 +21,7 @@
       });
     });
 
-    // link button to API status action
+    // link button to API stop action
     $("#stopAct").click(function ()
     {
       $("#responseMsg").removeClass("hidden");
@@ -32,7 +32,7 @@
       });
     });
 
-    // link button to API status action
+    // link button to API start action
     $("#startAct").click(function ()
     {
       $("#responseMsg").removeClass("hidden");
@@ -43,7 +43,7 @@
       });
     });
 
-    // link button to API status action
+    // link button to API restart action
     $("#restartAct").click(function ()
     {
       $("#responseMsg").removeClass("hidden");
