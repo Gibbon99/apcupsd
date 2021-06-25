@@ -27,8 +27,8 @@ The monit service can be configured like this:
 
 INSTALLATION
 
-I attempted to create an installable package for this following the Helloworld instructions, but it continually failed running the "make plugins" command.  Just copy the files here to their locations on your server.
+If the POST_INSTALL script does not work, you will need to copy "apcupsd.inc "  to "/usr/local/etc/inc/plugins.inc.d/apcupsd.inc".
 
-WHY
+This should make the apcupsd daemon appear in the Services widget on the dashboard.
 
-This is my first attempt at an OPNsense plugin - I wrote this becuase the NUT package would continually disconnect after configuring it for my UPS. I have been running apcupsd for several weeks now, and it has not failed once.
+Until I can work out how to create an installable package, copy the files here to their locations on your server.

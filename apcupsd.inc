@@ -26,6 +26,10 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+/*
+* This file belongs at /usr/local/etc/inc/plugins.inc.d/
+/*
+
 /**
  * register service
  * @return array
