@@ -29,10 +29,14 @@
 #
 # Support script for the apcupsd plugin
 #
-# Get the current status from the NIS Server for the UPS and return as a string
+# Get the current status from the NIS Server for the UPS and return as a json array
 #
 
 import subprocess
+import json
 
-output = subprocess.getoutput("/usr/local/sbin/apcaccess")
-print (output)          # Return the string to the php function ( getUpsStatusAction ) within ServiceController.php
+result = {}
+
+result['message'] = subprocess.getoutput("/usr/local/sbin/apcaccess")
+
+print (json.dumps(result)) # Return the string to the php function ( getUpsStatusAction ) within ServiceController.php in json format

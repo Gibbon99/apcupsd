@@ -98,7 +98,6 @@ class ServiceController extends ApiControllerBase
               return $result;
             }
         }
-        $result['message'] = 'Unable to run upsStatus action.';
-        return $result;
+        return array("message" => "Error: Null result from running apcupsd getNisStatus.");
     }
 }
