@@ -11,14 +11,17 @@
     });
 
     // link save button to API set action
-    $("#saveAct").click(function ()
-    {
-      saveFormToEndpoint(url = "/api/apcupsd/settings/set", formid = 'frm_GeneralSettings', callback_ok = function (data, status)
-      {
-        // Give some feedback
-      	$("#responseMsg").removeClass("hidden");
-        $("#responseMsg").html("Configuration saved. The service will need to be restarted for changes to take effect." );
-      });
+    $("#saveAct").click(function(){
+        saveFormToEndpoint(url="/api/apcupsd/settings/set",formid='frm_GeneralSettings',callback_ok=function(){
+            // action to run after successful save, for example reconfigure service.
+            ajaxCall(url="/api/apcupsd/service/reload", sendData={},callback=function(data,status) {
+                // action to run after reload
+
+                // Give some feedback
+                 $("#responseMsg").removeClass("hidden");
+                 $("#responseMsg").html("Configuration saved. The service will need to be restarted for changes to take effect." );
+            });
+        });
     });
 
     // link button to API stop action
