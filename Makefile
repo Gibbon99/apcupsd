@@ -6,3 +6,4 @@ PLUGIN_COMMENT=     APCUPSD plugin for OPNsense
 PLUGIN_MAINTAINER=  dberry999@gmail.com
 
 .include "../../Mk/plugins.mk"
+

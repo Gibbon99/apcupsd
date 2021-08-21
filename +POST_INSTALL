@@ -3,3 +3,4 @@ cp apcupsd.inc /usr/local/etc/inc/plugins.inc.d/apcupsd.inc
 if /usr/local/etc/rc.d/configd status > /dev/null; then
         /usr/local/etc/rc.d/configd restart
 fi
+

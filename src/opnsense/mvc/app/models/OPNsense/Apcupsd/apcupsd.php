@@ -36,3 +36,4 @@ use \OPNsense\Base\BaseModel;
 class apcupsd extends BaseModel
 {
 }
+

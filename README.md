@@ -32,3 +32,4 @@ If the POST_INSTALL script does not work, you will need to copy "apcupsd.inc "  
 This should make the apcupsd daemon appear in the Services widget on the dashboard.
 
 Until I can work out how to create an installable package, copy the files here to their locations on your server.
+

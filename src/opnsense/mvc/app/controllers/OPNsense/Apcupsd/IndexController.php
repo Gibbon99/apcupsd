@@ -45,3 +45,4 @@ class IndexController extends \OPNsense\Base\IndexController
         $this->view->generalForm = $this->getForm("general");
     }
 }
+

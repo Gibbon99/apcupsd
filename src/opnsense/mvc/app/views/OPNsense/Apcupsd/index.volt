@@ -86,3 +86,4 @@
     <button class="btn btn-primary"  id="restartAct" type="button"><b>{{ lang._('Restart Service') }}</b></button>
     <button class="btn btn-primary"  id="statusAct" type="button"><b>{{ lang._('Service Status') }}</b></button>
 </div>
+
