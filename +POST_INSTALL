@@ -1,4 +1,5 @@
 cp apcupsd.inc /usr/local/etc/inc/plugins.inc.d/apcupsd.inc
+chmod +x /usr/local/opnsense/scripts/OPNsense/Apcupsd/*.py
 
 if /usr/local/etc/rc.d/configd status > /dev/null; then
         /usr/local/etc/rc.d/configd restart
