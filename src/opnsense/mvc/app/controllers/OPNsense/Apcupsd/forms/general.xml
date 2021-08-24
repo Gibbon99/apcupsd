@@ -30,8 +30,8 @@
         <id>apcupsd.general.Device</id>
         <label>UPS Device</label>
         <type>text</type>
-        <help><![CDATA[Which port is the UPS connected to. Leave blank for USB UPSes.]]></help>
-        <hint>Specify an appropriate port or address.</hint>
+        <help><![CDATA[Which port is the UPS connected to. Leave blank for USB UPSes.<br>Default: /dev/cuaU0]]></help>
+        <hint>Specify an appropriate port or address. default: /dev/cuaU0</hint>
     </field>
     <field>
         <id>apcupsd.general.Polltime</id>
