@@ -3,6 +3,9 @@ APC UPS plugin for OPNsense
 
 Plugin Changelog
 ================
+1.1.4 - Fixed up errors with default setting for DEVICE not allowing a blank string when used with USB + added help info on default for serial.
+        Also some cleanup and rearrangement for move to official opnsense repo.
+
 1.1.3 - Fixed up errors with getting the service status and config values not saving to apcupsd.conf
 
 1.1.2 - Changed the way the values for configuration are saved and read.
