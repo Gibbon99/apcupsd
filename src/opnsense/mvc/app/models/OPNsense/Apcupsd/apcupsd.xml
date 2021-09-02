@@ -70,7 +70,6 @@
                 <ValidationMessage>Netserver port needs to be an value between 1 and 65535.</ValidationMessage>
                 <Required>N</Required>
             </NetserverPort>
-            
             <OnBatteryDelay type="IntegerField">
               <default>6</default>
               <Required>Y</Required>
@@ -78,7 +77,6 @@
               <MaximumValue>60</MaximumValue>
               <ValidationMessage>OnBattery Delay must be between 1 and 60.</ValidationMessage>
             </OnBatteryDelay>
-            
             <BatteryLevel type="IntegerField">
               <default>5</default>
               <Required>Y</Required>
@@ -86,7 +84,6 @@
               <MaximumValue>99</MaximumValue>
               <ValidationMessage>Battery Level must be between 1 and 99 percent.</ValidationMessage>
             </BatteryLevel>
-            
             <Minutes type="IntegerField">
               <default>3</default>
               <Required>Y</Required>
@@ -94,7 +91,6 @@
               <MaximumValue>60</MaximumValue>
               <ValidationMessage>Remaining runtime must be between 1 and 60 minutes.</ValidationMessage>              
             </Minutes>
-
             <Timeout type="IntegerField">
               <default>0</default>
               <Required>Y</Required>
@@ -102,7 +98,6 @@
               <MaximumValue>360</MaximumValue>
               <ValidationMessage>Remaining runtime must be between 1 and 360 seconds.</ValidationMessage>              
             </Timeout>
-
             <Annoy type="IntegerField">
               <default>300</default>
               <Required>Y</Required>
@@ -110,7 +105,6 @@
               <MaximumValue>360</MaximumValue>
               <ValidationMessage>Annoy time must be between 10 and 360 seconds.</ValidationMessage>              
             </Annoy>
-
             <AnnoyDelay type="IntegerField">
               <default>60</default>
               <Required>Y</Required>
@@ -118,7 +112,6 @@
               <MaximumValue>360</MaximumValue>
               <ValidationMessage>Annoy delay time must be between 10 and 360 seconds.</ValidationMessage>              
             </AnnoyDelay>
-
             <KillDelay type="IntegerField">
               <default>0</default>
               <Required>Y</Required>
@@ -126,7 +119,6 @@
               <MaximumValue>360</MaximumValue>
               <ValidationMessage>Kill delay time must be between 0 and 360 seconds.</ValidationMessage>              
             </KillDelay>
-
             <UPSClass type="OptionField">
                 <default>standalone</default>
                 <Required>Y</Required>
@@ -136,7 +128,6 @@
                     <sharemaster>sharemaster</sharemaster>
                 </OptionValues>
             </UPSClass>
-            
            <UPSMode type="OptionField">
                 <default>disable</default>
                 <Required>Y</Required>
@@ -145,7 +136,6 @@
                     <share>share</share>                    
                 </OptionValues>
             </UPSMode>
-
            <NoLogon type="OptionField">
                 <default>disable</default>
                 <Required>Y</Required>
@@ -157,9 +147,7 @@
                     <always>always</always>
                 </OptionValues>
             </NoLogon>
-                                                                                    
         </general>
     </items>
 </model>
-
 
