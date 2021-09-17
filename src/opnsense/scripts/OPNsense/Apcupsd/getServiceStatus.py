@@ -9,4 +9,3 @@
 import subprocess
 
 print (subprocess.getoutput("/usr/sbin/service apcupsd status"))
-

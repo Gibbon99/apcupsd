@@ -37,4 +37,3 @@ use \OPNsense\Base\ApiControllerBase;
 class StatusController extends ApiControllerBase
 {
 }
-

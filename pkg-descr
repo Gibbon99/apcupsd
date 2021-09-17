@@ -33,4 +33,3 @@ Start: /usr/sbin/service apcupsd start
 Stop: /usr/sbin/service apcupsd stop
 
 WWW: http://www.apcupsd.org/
-

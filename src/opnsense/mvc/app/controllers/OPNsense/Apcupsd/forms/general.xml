@@ -92,7 +92,7 @@
          <label>Minutes</label>
          <type>text</type>
          <help><![CDATA[If during a power failure, the UPS has run on batteries for TIMEOUT many seconds or longer, apcupsd will initiate a system shutdown. A value of 0 disables this timer.]]></help>
-         <hint>Note, if you have a Smart UPS, you will most likely want to disable this timer by setting it to zero. That way, your UPS will continue on batteries until either the PERCENT charge remaing drops to or below BATTERYLEVEL, or the remaining battery runtime drops to or below MINUTES.  Of course, if you are testing, setting this to 60 causes a quick system shutdown if you pull the power plug. If you have an older dumb UPS, you will want to set this to less than the time you know you can run on batteries.</hint>         
+         <hint>Note, if you have a Smart UPS, you will most likely want to disable this timer by setting it to zero. That way, your UPS will continue on batteries until either the PERCENT charge remaing drops to or below BATTERYLEVEL, or the remaining battery runtime drops to or below MINUTES.  Of course, if you are testing, setting this to 60 causes a quick system shutdown if you pull the power plug. If you have an older dumb UPS, you will want to set this to less than the time you know you can run on batteries.</hint>
          <advanced>true</advanced>
      </field>
       <field>
@@ -114,7 +114,7 @@
          <label>Kill Delay</label>
          <type>text</type>
          <help><![CDATA[If KILLDELAY is non-zero, apcupsd will continue running after a shutdown has been requested, and after the specified time in seconds attempt to kill the power.
-         
+
           This is for use on systems where apcupsd cannot regain control after a shutdown.]]></help>
          <advanced>true</advanced>
      </field>
@@ -138,7 +138,5 @@
          <type>dropdown</type>
          <help><![CDATA[The condition which determines when users are prevented from logging in during a power failure.]]></help>
          <advanced>true</advanced>
-     </field>          
+     </field>
 </form>
-
-

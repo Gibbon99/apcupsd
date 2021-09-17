@@ -74,4 +74,3 @@ function apcupsd_xmlrpc_sync()
 
     return $result;
 }
-

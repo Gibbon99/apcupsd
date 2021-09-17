@@ -40,4 +40,3 @@ result = {}
 result['message'] = subprocess.getoutput("/usr/local/sbin/apcaccess")
 
 print (json.dumps(result)) # Return the string to the php function ( getUpsStatusAction ) within ServiceController.php in json format
-

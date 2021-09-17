@@ -44,4 +44,3 @@ class StatusController extends \OPNsense\Base\IndexController
         $this->view->pick('OPNsense/Apcupsd/status');
     }
 }
-

@@ -101,4 +101,3 @@ class ServiceController extends ApiControllerBase
         return array("message" => "Error: Null result from running apcupsd getNisStatus.");
     }
 }
-
