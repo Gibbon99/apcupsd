@@ -91,13 +91,14 @@ class ServiceController extends ApiControllerBase
 
     public function getUpsStatusAction()
     {
+        $message = 'Error: bad request.';
         if ($this->request->isPost()) {
             $backend = new Backend();
-            $result = json_decode(trim($backend->configdRun("apcupsd upsstatus")), true);
-            if ($result !== null) {
-              return $result;
+            $message = trim($backend->configdRun('apcupsd upsstatus'));
+            if (!$message) {
+                $message = 'Error: empty result from running apcupsd apcaccess.';
             }
         }
-        return array("message" => "Error: Null result from running apcupsd apcaccess.");
+        return array('message' => $message);
     }
 }
