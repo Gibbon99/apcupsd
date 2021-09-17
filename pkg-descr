@@ -1,35 +1,51 @@
-# apcupsd
-APC UPS plugin for OPNsense
+APCUPSD can be used for controlling all APC UPS models. It can monitor and log
+the current power and battery status, perform automatic shutdown, and can run
+in network mode in order to power down other hosts on a LAN.
 
-Plugin Changelog
-================
-1.1.4 - Fixed up errors with default setting for DEVICE not allowing a blank string when used with USB + added help info on default for serial.
-        Also some cleanup and rearrangement for move to official opnsense repo.
-
-1.1.3 - Fixed up errors with getting the service status and config values not saving to apcupsd.conf
-
-1.1.2 - Changed the way the values for configuration are saved and read.
-
-1.1.1 - Moved actions_apcupsd.conf to the correct directory. Cleanup old directories.
-        Update pkg_descr.
-
-1.1 - Some small changes incl. code cleanup and adding more parameters.
-
-1.0	- Initial release
-
-"apcupsd" can be used for controlling all APC UPS models. It can monitor and log the current power and battery status, perform automatic shutdown,
-and can run in network mode in order to power down other hosts on a LAN.
-
-This plugin allows you to configure an APC UPS for use with OPNsense using the APCUPSD project. The setup page allows you to set the most common options
-for connecting your UPS to your OPNsense router and a status page for the UPS status. It also includes support to act as an APC Netserver.
+This plugin allows you to configure an APC UPS for use with OPNsense using the
+APCUPSD project. The setup page allows you to set the most common options for
+connecting your UPS to your OPNsense router and a status page for the UPS
+status. It also includes support to act as an APC Netserver.
 
 Additional information:
-This package does not come with a script to start the APCUPS daemon, it is recommended to use the OPNsense monit service to control the running
-of the apcupsd service.
+This package does not come with a script to start the APCUPS daemon, it is
+recommended to use the OPNsense monit service to control the running of the
+apcupsd service.
 
-The apcupsd daemon can be monitored via it's PID file ( /var/run/apcupsd.pid ) with the type set to "Process". Start and Stop can be set to:
+The apcupsd daemon can be monitored via it's PID file (/var/run/apcupsd.pid)
+with the type set to "Process". Start and Stop can be set to:
 
 Start: /usr/sbin/service apcupsd start
 Stop: /usr/sbin/service apcupsd stop
 
 WWW: http://www.apcupsd.org/
+
+Plugin Changelog
+================
+
+1.1.4
+
+* Fixed up errors with default setting for DEVICE not allowing a blank string when used with USB + added help info on default for serial
+* cleanup and rearrangement for move to official opnsense repo
+
+1.1.3
+
+* Fixed up errors with getting the service status and config values not saving to apcupsd.conf
+
+1.1.2
+
+* Changed the way the values for configuration are saved and read
+
+1.1.1
+
+* Moved actions_apcupsd.conf to the correct directory
+* Cleanup old directories
+* Update pkg_descr
+
+1.1
+
+* Some small changes incl. code cleanup and adding more parameters
+
+1.0
+
+* Initial release
