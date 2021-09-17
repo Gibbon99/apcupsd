@@ -28,7 +28,7 @@
     $("#stopAct").click(function ()
     {
       $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/stopService", sendData = {}, callback = function (data, status)
+      ajaxCall(url = "/api/apcupsd/service/stop", sendData = {}, callback = function (data, status)
       {
         // action to run after button click
         $("#responseMsg").html(data['message']);
@@ -39,7 +39,7 @@
     $("#startAct").click(function ()
     {
       $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/startService", sendData = {}, callback = function (data, status)
+      ajaxCall(url = "/api/apcupsd/service/start", sendData = {}, callback = function (data, status)
       {
         // action to run after button click
         $("#responseMsg").html(data['message']);
@@ -50,7 +50,7 @@
     $("#restartAct").click(function ()
     {
       $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/restartService", sendData = {}, callback = function (data, status)
+      ajaxCall(url = "/api/apcupsd/service/restart", sendData = {}, callback = function (data, status)
       {
         // action to run after button click
         $("#responseMsg").html(data['message']);
@@ -61,7 +61,7 @@
     $("#statusAct").click(function ()
     {
       $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/statusService", sendData = {}, callback = function (data, status)
+      ajaxCall(url = "/api/apcupsd/service/status", sendData = {}, callback = function (data, status)
       {
         // action to run after button click
         $("#responseMsg").html(data['message']);

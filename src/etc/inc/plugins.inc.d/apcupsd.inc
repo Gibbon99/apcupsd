@@ -47,9 +47,9 @@ function apcupsd_services()
         $services[] = array(
                 'description' => gettext('APC UPS Daemon'),
                 'configd' => array(
-                        'restart' => array('apcupsd restartService'),
-                        'start' => array('apcupsd startService'),
-                        'stop' => array('apcupsd stopService'),
+                        'restart' => array('apcupsd restart'),
+                        'start' => array('apcupsd start'),
+                        'stop' => array('apcupsd stop'),
                 ),
                 'name' => 'apcupsd',
         );

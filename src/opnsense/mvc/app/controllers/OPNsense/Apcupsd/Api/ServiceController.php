@@ -49,42 +49,42 @@ class ServiceController extends ApiControllerBase
         return ["status" => $status];
     }
 
-    public function statusServiceAction()
+    public function statusAction()
     {
         $result['message'] = 'Unable to run serviceStatus action.';
         if ($this->request->isPost()) {
             $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd statusService"));
+            $result['message'] = trim($backend->configdRun("apcupsd status"));
         }
         return $result;
     }
 
-    public function stopServiceAction()
+    public function stopAction()
     {
-        $result['message'] = 'Unable to run stopService action.';
+        $result['message'] = 'Unable to run stop action.';
         if ($this->request->isPost()) {
             $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd stopService"));
+            $result['message'] = trim($backend->configdRun("apcupsd stop"));
         }
         return $result;
     }
 
-    public function startServiceAction()
+    public function startAction()
     {
-        $result['message'] = 'Unable to run startService action.';
+        $result['message'] = 'Unable to run start action.';
         if ($this->request->isPost()) {
             $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd startService"));
+            $result['message'] = trim($backend->configdRun("apcupsd start"));
         }
         return $result;
     }
 
-    public function restartServiceAction()
+    public function restartAction()
     {
-        $result['message'] = 'Unable to run restartService action.';
+        $result['message'] = 'Unable to run restart action.';
         if ($this->request->isPost()) {
             $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd restartService"));
+            $result['message'] = trim($backend->configdRun("apcupsd restart"));
         }
         return $result;
     }
@@ -93,11 +93,11 @@ class ServiceController extends ApiControllerBase
     {
         if ($this->request->isPost()) {
             $backend = new Backend();
-            $result = json_decode(trim($backend->configdRun("apcupsd getNisStatus")), true);
+            $result = json_decode(trim($backend->configdRun("apcupsd upsstatus")), true);
             if ($result !== null) {
               return $result;
             }
         }
-        return array("message" => "Error: Null result from running apcupsd getNisStatus.");
+        return array("message" => "Error: Null result from running apcupsd apcaccess.");
     }
 }
