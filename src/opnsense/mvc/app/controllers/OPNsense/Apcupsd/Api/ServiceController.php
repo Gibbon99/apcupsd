@@ -32,62 +32,14 @@
 namespace OPNsense\Apcupsd\Api;
 
 use OPNsense\Core\Backend;
-use OPNsense\Base\ApiControllerBase;
+use OPNsense\Base\ApiMutableServiceControllerBase;
 
-class ServiceController extends ApiControllerBase
+class ServiceController extends ApiMutableServiceControllerBase
 {
-    public function reloadAction()
-    {
-        $status = "failed";
-        if ($this->request->isPost()) {
-            $backend = new Backend();
-            $bckresult = trim($backend->configdRun("template reload OPNsense/Apcupsd"));
-            if ($bckresult == "OK") {
-                $status = "ok";
-            }
-        }
-        return ["status" => $status];
-    }
-
-    public function statusAction()
-    {
-        $result['message'] = 'Unable to run serviceStatus action.';
-        if ($this->request->isPost()) {
-            $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd status"));
-        }
-        return $result;
-    }
-
-    public function stopAction()
-    {
-        $result['message'] = 'Unable to run stop action.';
-        if ($this->request->isPost()) {
-            $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd stop"));
-        }
-        return $result;
-    }
-
-    public function startAction()
-    {
-        $result['message'] = 'Unable to run start action.';
-        if ($this->request->isPost()) {
-            $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd start"));
-        }
-        return $result;
-    }
-
-    public function restartAction()
-    {
-        $result['message'] = 'Unable to run restart action.';
-        if ($this->request->isPost()) {
-            $backend = new Backend();
-            $result['message'] = trim($backend->configdRun("apcupsd restart"));
-        }
-        return $result;
-    }
+    protected static $internalServiceClass = '\OPNsense\Apcupsd\Apcupsd';
+    protected static $internalServiceTemplate = 'OPNsense/Apcupsd';
+    protected static $internalServiceEnabled = 'general.Enabled';
+    protected static $internalServiceName = 'apcupsd';
 
     public function getUpsStatusAction()
     {

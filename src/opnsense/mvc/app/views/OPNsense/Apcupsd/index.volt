@@ -1,88 +1,46 @@
+<div  class="col-md-12">
+    {{ partial('layout_partials/base_form',['fields':generalForm,'id':'frm_GeneralSettings','apply_btn_id':'saveAct'])}}
+</div>
 <script>
-  $(document).ready(function ()
-  {
-    var data_get_map = { 'frm_GeneralSettings': "/api/apcupsd/settings/get" };
-    mapDataToFormUI(data_get_map).done(function (data)
-    {
-      // place actions to run after load, for example update form styles.
-      updateServiceControlUI('apcupsd');
-      formatTokenizersUI();
-      $('.selectpicker').selectpicker('refresh');
-    });
+    $(document).ready(function () {
+        var data_get_map = { 'frm_GeneralSettings': '/api/apcupsd/settings/get' };
 
-    // link save button to API set action
-    $("#saveAct").click(function(){
-        saveFormToEndpoint(url="/api/apcupsd/settings/set",formid='frm_GeneralSettings',callback_ok=function(){
-            // action to run after successful save, for example reconfigure service.
-            ajaxCall(url="/api/apcupsd/service/reload", sendData={},callback=function(data,status) {
-                // action to run after reload
+        mapDataToFormUI(data_get_map).done(function(data) {
+            // place actions to run after load, for example update form styles.
+            formatTokenizersUI();
+            $('.selectpicker').selectpicker('refresh');
+        });
 
-                // Give some feedback
-                 $("#responseMsg").removeClass("hidden");
-                 $("#responseMsg").html("Configuration saved. The service will need to be restarted for changes to take effect." );
+        // Adds or updates the service control
+        updateServiceControlUI('apcupsd');
+
+        var waitEnabled = function(callback, ntry) {
+            ntry = ntry || 0;
+            ajaxCall('/api/apcupsd/service/status', {}, function(data) {
+                if ((data && data['status'] === 'running') || ntry > 5) {
+                    callback.call(null);
+                } else {
+                    setTimeout(function() {
+                        waitEnabled(callback, ntry++);
+                    }, 1000);
+                }
+            });
+        };
+
+        // link save button to API set action
+        $('#saveAct').click(function(){
+            saveFormToEndpoint(url='/api/apcupsd/settings/set',formid='frm_GeneralSettings',callback_ok=function(){
+                $('#frm_GeneralSettings_progress').addClass('fa fa-spinner fa-pulse');
+                // action to run after successful save, for example reconfigure service.
+                ajaxCall(url='/api/apcupsd/service/reconfigure', sendData={},callback=function(data,status) {
+                    // action to run after reload
+                    $('#frm_GeneralSettings_progress').removeClass('fa fa-spinner fa-pulse');
+                    updateServiceControlUI('apcupsd');
+                    waitEnabled(function() {
+                        updateServiceControlUI('apcupsd');
+                    });
+                });
             });
         });
     });
-
-    // link button to API stop action
-    $("#stopAct").click(function ()
-    {
-      $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/stop", sendData = {}, callback = function (data, status)
-      {
-        // action to run after button click
-        $("#responseMsg").html(data['message']);
-      });
-    });
-
-    // link button to API start action
-    $("#startAct").click(function ()
-    {
-      $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/start", sendData = {}, callback = function (data, status)
-      {
-        // action to run after button click
-        $("#responseMsg").html(data['message']);
-      });
-    });
-
-    // link button to API restart action
-    $("#restartAct").click(function ()
-    {
-      $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/restart", sendData = {}, callback = function (data, status)
-      {
-        // action to run after button click
-        $("#responseMsg").html(data['message']);
-      });
-    });
-
-    // link status button to API status action
-    $("#statusAct").click(function ()
-    {
-      $("#responseMsg").removeClass("hidden");
-      ajaxCall(url = "/api/apcupsd/service/status", sendData = {}, callback = function (data, status)
-      {
-        // action to run after button click
-        $("#responseMsg").html(data['message']);
-      });
-    });
-  });
-
 </script>
-
-<div class="alert alert-info hidden" role="alert" id="responseMsg">
-
-</div>
-
-<div  class="col-md-12">
-    {{ partial("layout_partials/base_form",['fields':generalForm,'id':'frm_GeneralSettings'])}}
-</div>
-
-<div class="col-md-12">
-    <button class="btn btn-primary"  id="saveAct" type="button"><b>{{ lang._('Save Config') }}</b></button>
-    <button class="btn btn-primary"  id="stopAct" type="button"><b>{{ lang._('Stop Service') }}</b></button>
-    <button class="btn btn-primary"  id="startAct" type="button"><b>{{ lang._('Start Service') }}</b></button>
-    <button class="btn btn-primary"  id="restartAct" type="button"><b>{{ lang._('Restart Service') }}</b></button>
-    <button class="btn btn-primary"  id="statusAct" type="button"><b>{{ lang._('Service Status') }}</b></button>
-</div>
