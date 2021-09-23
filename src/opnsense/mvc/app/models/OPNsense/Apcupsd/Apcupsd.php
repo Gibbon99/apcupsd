@@ -29,10 +29,10 @@
  *
  */
 
-namespace OPNsense\apcupsd;
+namespace OPNsense\Apcupsd;
 
 use \OPNsense\Base\BaseModel;
 
-class apcupsd extends BaseModel
+class Apcupsd extends BaseModel
 {
 }

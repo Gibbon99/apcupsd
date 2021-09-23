@@ -29,7 +29,7 @@
  *
  */
 
-namespace OPNsense\apcupsd;
+namespace OPNsense\Apcupsd;
 
 /**
  * Class IndexController

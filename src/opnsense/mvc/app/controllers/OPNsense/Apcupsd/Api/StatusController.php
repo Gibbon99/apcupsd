@@ -29,7 +29,7 @@
  *
  */
 
-namespace OPNsense\apcupsd\Api;
+namespace OPNsense\Apcupsd\Api;
 
 use \OPNsense\Core\Backend;
 use \OPNsense\Base\ApiControllerBase;
