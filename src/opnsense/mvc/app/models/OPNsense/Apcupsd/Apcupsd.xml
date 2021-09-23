@@ -50,17 +50,13 @@
                 <MaximumValue>86400</MaximumValue>
                 <ValidationMessage>Polltime must be between 1 and 86400.</ValidationMessage>
             </Polltime>
-            <Netserver type="OptionField">
-                <default>off</default>
-                <Required>N</Required>
-                <OptionValues>
-                    <on>on</on>
-                    <off>off</off>
-                </OptionValues>
+            <Netserver type="BooleanField">
+                <default>1</default>
+                <Required>Y</Required>
             </Netserver>
             <NetserverAddress type="NetworkField">
                 <default>0.0.0.0</default>
-                <Required>N</Required>
+                <Required>Y</Required>
             </NetserverAddress>
             <NetserverPort type="IntegerField">
                 <default>3551</default>

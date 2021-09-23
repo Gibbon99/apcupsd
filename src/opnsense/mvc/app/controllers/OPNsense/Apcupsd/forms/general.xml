@@ -44,7 +44,7 @@
     <field>
         <id>apcupsd.general.Netserver</id>
         <label>Netserver</label>
-        <type>dropdown</type>
+        <type>checkbox</type>
         <help><![CDATA[Sets the state of the network information server.]]></help>
         <hint>A network information server is available to retrieve the STATUS and EVENT data over the network.</hint>
         <advanced>true</advanced>
