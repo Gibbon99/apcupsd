@@ -41,16 +41,31 @@ class ServiceController extends ApiMutableServiceControllerBase
     protected static $internalServiceEnabled = 'general.Enabled';
     protected static $internalServiceName = 'apcupsd';
 
-    public function getUpsStatusAction()
-    {
-        $message = 'Error: bad request.';
-        if ($this->request->isPost()) {
+    public function getUpsStatusAction() {
+        $result = $this->getUpsStatusOutput();
+        return $result;
+    }
+
+    private function getUpsStatusOutput() {
+        $output = $error = NULL;
+
+        if ($this->isEnabled()) {
             $backend = new Backend();
-            $message = trim($backend->configdRun('apcupsd upsstatus'));
-            if (!$message) {
-                $message = 'Error: empty result from running apcupsd apcaccess.';
+            $output = trim($backend->configdRun('apcupsd upsstatus'));
+            if (empty($output)) {
+                $error = 'Error: empty output from apcaccess';
             }
+        } else {
+            $error = 'Error: apcupsd is disabled';
         }
-        return array('message' => $message);
+
+        return array(
+            'error' => $error,
+            'output' => $output
+        );
+    }
+
+    private function isEnabled() {
+        return $this->getModel()->general->Enabled == '1';
     }
 }
