@@ -43,7 +43,32 @@ class ServiceController extends ApiMutableServiceControllerBase
 
     public function getUpsStatusAction() {
         $result = $this->getUpsStatusOutput();
+        $result['status'] = NULL;
+        if (!$result['error']) {
+            $result['status'] = $this->parseUpsStatus($result['output']);
+        }
         return $result;
+    }
+
+    private function parseUpsStatus($statusOutput) {
+        $status = array();
+        foreach (explode("\n", $statusOutput) as $line) {
+            $kv = array_map('trim', explode(':', $line, 2));
+            $key = $kv[0];
+            $value = isset($kv[1]) ? $kv[1] : NULL;
+            $norm = $value;
+            if (empty($key)) {
+                continue;
+            }
+            if (preg_match('/^((?:[0-9]*[.])?[0-9]+)(?:\s+\w+)?$/i', $value, $matches)) {
+                $norm = floatval($matches[1]);
+            }
+            $status[$key] = array(
+                'value' => $value,
+                'norm' => $norm
+            );
+        }
+        return $status;
     }
 
     private function getUpsStatusOutput() {
