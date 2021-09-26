@@ -7,21 +7,26 @@ APCUPSD project. The setup page allows you to set the most common options for
 connecting your UPS to your OPNsense router and a status page for the UPS
 status. It also includes support to act as an APC Netserver.
 
-Additional information:
-This package does not come with a script to start the APCUPS daemon, it is
-recommended to use the OPNsense monit service to control the running of the
-apcupsd service.
-
-The apcupsd daemon can be monitored via it's PID file (/var/run/apcupsd.pid)
-with the type set to "Process". Start and Stop can be set to:
-
-Start: /usr/sbin/service apcupsd start
-Stop: /usr/sbin/service apcupsd stop
-
 WWW: http://www.apcupsd.org/
 
 Plugin Changelog
 ================
+
+1.2
+
+* Breaking: apcupsd start/stop is now handled automatically
+* Breaking: renamed configd action startService to start
+* Breaking: renamed configd action stopService to stop
+* Breaking: renamed configd action restartService to restart
+* Breaking: renamed configd action statusService to status
+* Breaking: renamed configd action getNisStatus to upsstatus
+* Add /etc/rc.conf.d/apcupsd template so it's not required to configure apcupsd service manually
+* Settings: simplified UI for service control
+* Settings: enable netserver by default, changed type to checkbox and moved in standard settings (non advanced)
+* Settings: add all supported APCUPSD cable options
+* Status: auto refresh page every 5 seconds and check if service is enabled
+* Changed menu item icon to battery-full icon
+* Implement dashboard widget
 
 1.1.4
 
