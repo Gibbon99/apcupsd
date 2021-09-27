@@ -29,6 +29,7 @@
 
 require_once("guiconfig.inc");
 require_once("widgets/include/apcupsd.inc");
+
 ?>
 <table id="apcupsd-widget-status" class="table table-striped table-condensed"></table>
 <script>

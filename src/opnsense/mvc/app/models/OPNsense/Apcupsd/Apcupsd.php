@@ -32,7 +32,7 @@
 
 namespace OPNsense\Apcupsd;
 
-use \OPNsense\Base\BaseModel;
+use OPNsense\Base\BaseModel;
 
 class Apcupsd extends BaseModel
 {

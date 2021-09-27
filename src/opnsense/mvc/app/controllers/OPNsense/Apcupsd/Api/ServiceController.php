@@ -42,21 +42,23 @@ class ServiceController extends ApiMutableServiceControllerBase
     protected static $internalServiceEnabled = 'general.Enabled';
     protected static $internalServiceName = 'apcupsd';
 
-    public function getUpsStatusAction() {
+    public function getUpsStatusAction()
+    {
         $result = $this->getUpsStatusOutput();
-        $result['status'] = NULL;
+        $result['status'] = null;
         if (!$result['error']) {
             $result['status'] = $this->parseUpsStatus($result['output']);
         }
         return $result;
     }
 
-    private function parseUpsStatus($statusOutput) {
+    private function parseUpsStatus($statusOutput)
+    {
         $status = array();
         foreach (explode("\n", $statusOutput) as $line) {
             $kv = array_map('trim', explode(':', $line, 2));
             $key = $kv[0];
-            $value = isset($kv[1]) ? $kv[1] : NULL;
+            $value = isset($kv[1]) ? $kv[1] : null;
             $norm = $value;
             if (empty($key)) {
                 continue;
@@ -72,8 +74,9 @@ class ServiceController extends ApiMutableServiceControllerBase
         return $status;
     }
 
-    private function getUpsStatusOutput() {
-        $output = $error = NULL;
+    private function getUpsStatusOutput()
+    {
+        $output = $error = null;
 
         if ($this->isEnabled()) {
             $backend = new Backend();
@@ -91,7 +94,8 @@ class ServiceController extends ApiMutableServiceControllerBase
         );
     }
 
-    private function isEnabled() {
+    private function isEnabled()
+    {
         return $this->getModel()->general->Enabled == '1';
     }
 }
