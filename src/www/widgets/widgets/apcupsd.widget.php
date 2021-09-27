@@ -31,21 +31,38 @@ require_once("guiconfig.inc");
 require_once("widgets/include/apcupsd.inc");
 
 ?>
-<table id="apcupsd-widget-status" class="table table-striped table-condensed"></table>
+<table id="apcupsd-widget" class="table table-striped table-condensed">
+    <colgroup>
+        <col class="apcupsd-widget-label" />
+        <col />
+    </colgroup>
+    <tbody id="apcupsd-widget-tbody"></tbody>
+</table>
+<style>
+    .apcupsd-widget-label {
+        max-width: 20em;
+        width: 30%;
+        min-width: 10em;
+    }
+
+    .apcupsd-widget-highlight {
+        font-weight: bold
+    }
+</style>
 <script>
 $(document).ready(() => {
     const $newCell = (content) => $('<td></td>').html(content);
 
     const $newLabel = (text) => {
         return $('<td></td>').text(text);
-    }
+    };
 
     const $newRow = (content, label) => {
         return $('<tr></tr>').append(
             typeof label === 'string' ? $newLabel(label) : label,
             content
         );
-    }
+    };
 
     const $newProgressBar = (width, text) => {
         const $text = $('<span class="text-center"></span>').text(text).css({
@@ -61,7 +78,8 @@ $(document).ready(() => {
     };
 
     const renderText = (data, label) => {
-        return $newRow($('<td></td>').text(data.value), label);
+        const text = typeof data === "string" ? data : data.value;
+        return $newRow($('<td></td>').text(text), label);
     };
 
     const renderProgress = (data, label, progressText) => {
@@ -77,10 +95,27 @@ $(document).ready(() => {
             text += ' ( ~ ' + Math.round(loadpct.norm * nompower.norm / 100) + ' W )';
         }
         return renderProgress(loadpct, 'Load', text);
-    }
+    };
+
+    const renderHighlight = (text, label, okRegexp, errRegexp) => {
+        const textEl = $('<span class="apcupsd-widget-highlight"></span>').text(text);
+        if (okRegexp && okRegexp.exec(text)) {
+            textEl.addClass("text-success");
+        } else if (errRegexp && errRegexp.exec(text)) {
+            textEl.addClass("text-danger");
+        } else {
+            textEl.addClass("text-warning");
+        }
+        return $newRow($('<td></td>').append(textEl), label);
+    };
+
+    const selfTestText = {
+        BT: 'Failed due to battery capacity (BT)',
+        NG: 'Failed due to overload (NG)',
+        NO: 'No results',
+    };
 
     const updateUi = (status) => {
-        const tbody = $('<tbody></tbody>');
         const rows = [];
 
         if (status.MODEL) {
@@ -88,7 +123,29 @@ $(document).ready(() => {
         }
 
         if (status.STATUS) {
-            rows.push(renderText(status.STATUS, 'Status'));
+            rows.push(
+                renderHighlight(
+                    status.STATUS.value,
+                    'Status',
+                    /ONLINE/,
+                    /ONBATT|LOWBATT|REPLACEBATT|NOBATT|SLAVEDOWN|COMMLOST/
+                )
+            );
+        }
+
+        if (status.SELFTEST) {
+            const value = status.SELFTEST.value;
+            const text = selfTestText[value] || value;
+            if (value === 'NO') {
+                rows.push(renderText(text, 'Self test'));
+            } else {
+                rows.push(renderHighlight(
+                    text,
+                    'Self test',
+                    /OK/,
+                    /BT|NG/
+                ));
+            }
         }
 
         if (status.LINEV) {
@@ -119,21 +176,16 @@ $(document).ready(() => {
             rows.push(renderText(status.ITEMP, 'Temperature'));
         }
 
-        if (status.SELFTEST) {
-            rows.push(renderText(status.SELFTEST, 'Self test'));
-        }
-
-        tbody.append(rows);
-        $('#apcupsd-widget-status').html(tbody);
+        $('#apcupsd-widget-tbody').html(rows);
     };
 
     const displayError = (message) => {
-        const el = $('<tr></tr>').append($('<td class="text-center text-danger"></td>').text(message));
-        $('#apcupsd-widget-status').html($('<tbody>').append(el));
-    }
+        const el = $('<tr></tr>').append($('<td class="text-center text-danger" colspan="2"></td>').text(message));
+        $('#apcupsd-widget-tbody').html(el);
+    };
 
     const refreshStatus = () => {
-        ajaxCall("/api/apcupsd/service/getUpsStatus", {}, function(data, status) {
+        ajaxCall('/api/apcupsd/service/getUpsStatus', {}, function(data, status) {
             if (status === 'success' && !data.error) {
                 updateUi(data.status);
             } else {
@@ -142,6 +194,7 @@ $(document).ready(() => {
             setTimeout(refreshStatus, 5000);
         });
     };
+
     refreshStatus();
 });
 </script>
