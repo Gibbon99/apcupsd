@@ -12,6 +12,16 @@ WWW: http://www.apcupsd.org/
 Plugin Changelog
 ================
 
+1.2.1
+
+* Widget: fix configuration page link
+* Widget: limit the labels column width
+* Widget: colorize the status and self test values
+* Widget: describe the self test value when not OK
+* Actions: add 2 seconds sleep to apcupsd start/restart commands to prevent status race condition
+* Change text case APCUPSD to Apcupsd or apcupsd
+* PHP PSR-12 compliance
+
 1.2
 
 * Breaking: apcupsd start/stop is now handled automatically
