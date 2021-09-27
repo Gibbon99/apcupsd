@@ -14,13 +14,14 @@ function apcupsd_services()
         $config['OPNsense']['apcupsd']['general']['Enabled'] == 1
     ) {
         $services[] = array(
-                'description' => gettext('APC UPS Daemon'),
-                'configd' => array(
-                        'restart' => array('apcupsd restart'),
-                        'start' => array('apcupsd start'),
-                        'stop' => array('apcupsd stop'),
-                ),
-                'name' => 'apcupsd',
+            'description' => gettext('APC UPS Daemon'),
+            'configd' => array(
+                'restart' => array('apcupsd restart'),
+                'start' => array('apcupsd start'),
+                'stop' => array('apcupsd stop'),
+            ),
+            'name' => 'apcupsd',
+            'pidfile' => '/var/run/apcupsd.pid'
         );
     }
     return $services;
