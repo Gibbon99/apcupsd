@@ -1,6 +1,6 @@
-=======
-APCUPSD
-=======
+========================
+Apcupsd (APC UPS daemon)
+========================
 
 This plugin allows you to configure a APC UPS for use with OPNsense.
 The setup page allows you to set the most common options for connecting
